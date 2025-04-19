@@ -33,3 +33,8 @@ typing_extensions==4.13.2
 uvicorn==0.34.2
 watchfiles==1.0.5
 websockets==15.0.1
+sqlalchemy==2.0.28
+mysql-connector-python==8.2.0
+python-jose==3.3.0
+passlib==1.7.4
+bcrypt==4.1.1
