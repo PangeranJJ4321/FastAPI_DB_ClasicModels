@@ -132,7 +132,7 @@ DB_NAME=classicmodels
     cd FastAPI_DB_ClasicModels
     code .
     ```
-2. Aktifkan virtual environment
+2. Aktifkan virtual environment<br/>
    Tentukan nama virtual environmemnt kamu, masal disini namanya fastapi-db-classicmodels.
    Buka terminal git bash yah!, jalankan code berikut :
    ```bash
@@ -143,7 +143,7 @@ DB_NAME=classicmodels
    ```bash
    pip install -r requirements.txt
    ```
-6. Buat file .env 
+6. Buat file .env <br/>
    Isi file .env dengan copy isi file .env.development dan isi dengan konfigurasi MySQL kamu, contoh : 
    ```env
    DB_USER=your_username
@@ -154,7 +154,7 @@ DB_NAME=classicmodels
    ```
    Catatan : Buat data base dulu yah di heidiSQL dengan nama classicmodels, atau misalnya
    kalian sudah memiliki database tersebut itu juga tidak masalah.
-8. Jalankan server(project)
+8. Jalankan server(project)<br/>
    Buka terminal vs code kamu lagi, janlankan :
    ```bash
    uvicorn main:app --reload
@@ -164,7 +164,7 @@ DB_NAME=classicmodels
    fastapi dev main.py
    ```
 
-9. Akses dokumentasi Swagger UI dan Uji coba API
+9. Akses dokumentasi Swagger UI dan Uji coba API<br/>
    Uji API bisa di aplikasi Postman, contoh untuk mendapatkan data customers :
    ```bash
    http://127.0.0.1:8000/api/v1/customers
