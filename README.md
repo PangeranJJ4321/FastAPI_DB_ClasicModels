@@ -127,11 +127,11 @@ DB_NAME=classicmodels
 ## 🧪 Cara Menjalankan
 
 1. Clone repo ini
-  ```bash
-  https://github.com/PangeranJJ4321/FastAPI_DB_ClasicModels.git
-  cd FastAPI_DB_ClasicModels
-  code .
-  ```
+    ```bash
+    https://github.com/PangeranJJ4321/FastAPI_DB_ClasicModels.git
+    cd FastAPI_DB_ClasicModels
+    code .
+    ```
 2. Aktifkan virtual environment
    Tentukan nama virtual environmemnt kamu, masal disini namanya fastapi-db-classicmodels.
    Buka terminal git bash yah!, jalankan code berikut :
