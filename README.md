@@ -28,6 +28,7 @@ Cocok untuk pembelajaran maupun pengembangan API yang clean, scalable, dan mudah
 ├── models/
 │   └── models.py
 ├── repositories/
+│   └── repositories.py
 ├── routes/
 │   └── routes.py
 ├── schemas/
