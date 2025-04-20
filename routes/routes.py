@@ -1,8 +1,16 @@
 from fastapi import APIRouter
 from controllers.controller import (
-    CustomerController, EmployeeController, OfficeController, OrderController,
-    OrderDetailController, ProductController, ProductLineController, PaymentController
+    CustomerController, 
+    EmployeeController, 
+    OfficeController, 
+    OrderController,
+    OrderDetailController, 
+    ProductController, 
+    ProductLineController, 
+    PaymentController
 )
+
+from controllers.auth_controller import AuthController
 
 def setup_routes() -> APIRouter:
     api_router = APIRouter()
@@ -16,6 +24,7 @@ def setup_routes() -> APIRouter:
     product_controller = ProductController()
     product_line_controller = ProductLineController()
     payment_controller = PaymentController()
+    auth_controller = AuthController()
     
     # Include routers
     api_router.include_router(customer_controller.router)
@@ -26,5 +35,6 @@ def setup_routes() -> APIRouter:
     api_router.include_router(product_controller.router)
     api_router.include_router(product_line_controller.router)
     api_router.include_router(payment_controller.router)
+    api_router.include_router(auth_controller.router)
     
     return api_router

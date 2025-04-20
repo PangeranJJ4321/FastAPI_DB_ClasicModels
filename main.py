@@ -1,13 +1,15 @@
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
-from routes.routes import setup_routes
+from routes.routes import setup_routes 
 from middleware.middleware import RequestLoggingMiddleware
 from database.base import engine, Base
+from database.session import get_db
 import uvicorn
 import logging
 
 # Create database tables
+get_db()
 Base.metadata.create_all(bind=engine)
 
 # Setup logging

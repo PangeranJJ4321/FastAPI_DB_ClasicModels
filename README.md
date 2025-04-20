@@ -19,6 +19,7 @@ Cocok untuk pembelajaran maupun pengembangan API yang clean, scalable, dan mudah
 │   └── auth.py
 ├── controllers/
 │   └── controller.py
+│   └── auth_controller.py
 ├── database/
 │   └── base.py
 │   └── session.py
