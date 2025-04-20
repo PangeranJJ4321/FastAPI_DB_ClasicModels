@@ -1,6 +1,7 @@
 # 📦 FastAPI DB Classicmodels
 
-API ini dibangun menggunakan **FastAPI** dengan arsitektur **layered** untuk mengelola data dari database **ClassicModels** (MySQL). Cocok untuk pembelajaran maupun pengembangan API yang clean, scalable, dan mudah di-maintain. ✨
+API ini dibangun menggunakan **FastAPI** dengan arsitektur **layered** untuk mengelola data dari database **ClassicModels** (MySQL). 
+Cocok untuk pembelajaran maupun pengembangan API yang clean, scalable, dan mudah di-maintain. ✨
 
 ## 🚀 Tech Stack
 
@@ -13,19 +14,24 @@ API ini dibangun menggunakan **FastAPI** dengan arsitektur **layered** untuk men
 ## 🗂️ Struktur Proyek
 
 ```bash
-.
+.FastAPI_DB_ClasicModels
 ├── auth/
+│   └── auth.py
 ├── controllers/
 │   └── controller.py
 ├── database/
+│   └── base.py
+│   └── session.py
 ├── fastapi_clasicmodels/
 ├── middleware/
+│   └── middleware.py
 ├── models/
 │   └── models.py
 ├── repositories/
 ├── routes/
 │   └── routes.py
 ├── schemas/
+│   └── schemas.py
 ├── services/
 │   └── service.py
 ├── main.py
@@ -61,38 +67,61 @@ DB_NAME=classicmodels
   </thead>
   <tbody>
     <tr>
-      <td><code>routes/</code></td>
-      <td>Menangani routing endpoint</td>
+      <td><code>auth/</code></td>
+      <td>Menangani proses autentikasi dan otorisasi (jika diimplementasi)</td>
     </tr>
     <tr>
       <td><code>controllers/</code></td>
-      <td>Menampung logika pemrosesan dan interaksi antar layer</td>
+      <td>Menampung logika pemrosesan request dan penghubung antar layer</td>
     </tr>
     <tr>
-      <td><code>services/</code></td>
-      <td>Menjalankan logika bisnis utama</td>
+      <td><code>database/</code></td>
+      <td>Konfigurasi koneksi database dan inisialisasi engine/session</td>
     </tr>
     <tr>
-      <td><code>repositories/</code></td>
-      <td>Berinteraksi langsung dengan database</td>
+      <td><code>fastapi_clasicmodels/</code></td>
+      <td>Package utama aplikasi FastAPI kamu (bisa digunakan untuk config global)</td>
+    </tr>
+    <tr>
+      <td><code>middleware/</code></td>
+      <td>Custom middleware seperti logging, CORS, atau error handler</td>
     </tr>
     <tr>
       <td><code>models/</code></td>
-      <td>Struktur tabel & ORM</td>
+      <td>ORM model yang mendeskripsikan tabel-tabel pada database</td>
+    </tr>
+    <tr>
+      <td><code>repositories/</code></td>
+      <td>Berisi fungsi-fungsi CRUD yang langsung berinteraksi dengan database</td>
+    </tr>
+    <tr>
+      <td><code>routes/</code></td>
+      <td>Menangani definisi endpoint dan path operasi API</td>
     </tr>
     <tr>
       <td><code>schemas/</code></td>
-      <td>Validasi data masuk & keluar (menggunakan Pydantic)</td>
+      <td>Definisi schema request dan response menggunakan Pydantic</td>
+    </tr>
+    <tr>
+      <td><code>services/</code></td>
+      <td>Berisi logika bisnis dan pengolahan data sebelum masuk ke controller atau repository</td>
+    </tr>
+    <tr>
+      <td><code>main.py</code></td>
+      <td>Entry point aplikasi untuk menjalankan FastAPI app</td>
     </tr>
   </tbody>
 </table>
 
+
 ## 📌 Fitur, CRUD for all tables, (Contoh)
-🔍 Get all customers
-🛍️ Add new order
-📦 Update product stock
-🧾 Get sales report by employee
-🔐 Authentication (opsional), ada yah
+<ul>
+  <li>🔍 Get all customers</li>
+  <li>🛍️ Add new order</li>
+  <li>📦 Update product stock</li>
+  <li>🧾 Get sales report by employee</li>
+  <li>🔐 Authentication (opsional), ada yah</li>
+</ul>
 
 ## 🧪 Cara Menjalankan
 
