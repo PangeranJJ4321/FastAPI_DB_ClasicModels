@@ -223,4 +223,6 @@ headers = {
 
 ---
 
-## Terima kasih
+## 🙏 Terima kasih sudah mampir!
+
+Kalau bermanfaat, jangan lupa kasih ⭐ di repo ini ya
