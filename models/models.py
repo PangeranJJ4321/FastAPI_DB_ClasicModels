@@ -16,10 +16,10 @@ class Customer(Base):
     state = Column(String(50))
     postalCode = Column(String(15))
     country = Column(String(50), nullable=False)
-    salesRepEmployeeNumber = Column(Integer, ForeignKey("employees.employeeNumber"))
+    salesRepEmployeeNumber = Column(Integer, ForeignKey("employees.employeeNumber", ondelete="SET NULL"))
     creditLimit = Column(Float)
-    
-    orders = relationship("Order", back_populates="customer")
+
+    orders = relationship("Order", back_populates="customer", passive_deletes=True)
     employee = relationship("Employee", back_populates="customers")
 
 class Employee(Base):
@@ -30,16 +30,18 @@ class Employee(Base):
     firstName = Column(String(50), nullable=False)
     extension = Column(String(10), nullable=False)
     email = Column(String(100), nullable=False)
-    officeCode = Column(String(10), ForeignKey("offices.officeCode"), nullable=False)
-    reportsTo = Column(Integer, ForeignKey("employees.employeeNumber"))
+    officeCode = Column(String(10), ForeignKey("offices.officeCode", ondelete="CASCADE"), nullable=False)
+    reportsTo = Column(Integer, ForeignKey("employees.employeeNumber", ondelete="SET NULL"))
     jobTitle = Column(String(50), nullable=False)
     
-    customers = relationship("Customer", back_populates="employee")
+    customers = relationship("Customer", back_populates="employee", passive_deletes=True)
     office = relationship("Office", back_populates="employees")
     subordinates = relationship("Employee", 
-                              foreign_keys=[reportsTo],
-                              backref="manager",
-                              remote_side=[employeeNumber])
+        foreign_keys=[reportsTo],
+        backref="manager",
+        remote_side=[employeeNumber],
+        passive_deletes=True
+    )
 
 class Office(Base):
     __tablename__ = "offices"
@@ -54,7 +56,7 @@ class Office(Base):
     postalCode = Column(String(15), nullable=False)
     territory = Column(String(10), nullable=False)
     
-    employees = relationship("Employee", back_populates="office")
+    employees = relationship("Employee", back_populates="office", passive_deletes=True)
 
 class Order(Base):
     __tablename__ = "orders"
@@ -65,29 +67,29 @@ class Order(Base):
     shippedDate = Column(Date)
     status = Column(String(15), nullable=False)
     comments = Column(Text)
-    customerNumber = Column(Integer, ForeignKey("customers.customerNumber"), nullable=False)
+    customerNumber = Column(Integer, ForeignKey("customers.customerNumber", ondelete="CASCADE"), nullable=False)
     
-    customer = relationship("Customer", back_populates="orders")
-    orderDetails = relationship("OrderDetail", back_populates="order")
+    customer = relationship("Customer", back_populates="orders", passive_deletes=True)
+    orderDetails = relationship("OrderDetail", back_populates="order", passive_deletes=True)
 
 class OrderDetail(Base):
     __tablename__ = "orderdetails"
     
-    orderNumber = Column(Integer, ForeignKey("orders.orderNumber"), primary_key=True)
-    productCode = Column(String(15), ForeignKey("products.productCode"), primary_key=True)
+    orderNumber = Column(Integer, ForeignKey("orders.orderNumber", ondelete="CASCADE"), primary_key=True)
+    productCode = Column(String(15), ForeignKey("products.productCode", ondelete="CASCADE"), primary_key=True)
     quantityOrdered = Column(Integer, nullable=False)
     priceEach = Column(Float, nullable=False)
     orderLineNumber = Column(Integer, nullable=False)
     
-    order = relationship("Order", back_populates="orderDetails")
-    product = relationship("Product", back_populates="orderDetails")
+    order = relationship("Order", back_populates="orderDetails", passive_deletes=True)
+    product = relationship("Product", back_populates="orderDetails", passive_deletes=True)
 
 class Product(Base):
     __tablename__ = "products"
     
     productCode = Column(String(15), primary_key=True, index=True)
     productName = Column(String(70), nullable=False)
-    productLine = Column(String(50), ForeignKey("productlines.productLine"), nullable=False)
+    productLine = Column(String(50), ForeignKey("productlines.productLine", ondelete="CASCADE"), nullable=False)
     productScale = Column(String(10), nullable=False)
     productVendor = Column(String(50), nullable=False)
     productDescription = Column(Text, nullable=False)
@@ -95,8 +97,8 @@ class Product(Base):
     buyPrice = Column(Float, nullable=False)
     MSRP = Column(Float, nullable=False)
     
-    productLineInfo = relationship("ProductLine", back_populates="products")
-    orderDetails = relationship("OrderDetail", back_populates="product")
+    productLineInfo = relationship("ProductLine", back_populates="products", passive_deletes=True)
+    orderDetails = relationship("OrderDetail", back_populates="product", passive_deletes=True)
 
 class ProductLine(Base):
     __tablename__ = "productlines"
@@ -106,12 +108,12 @@ class ProductLine(Base):
     htmlDescription = Column(Text)
     image = Column(String(100))
     
-    products = relationship("Product", back_populates="productLineInfo")
+    products = relationship("Product", back_populates="productLineInfo", passive_deletes=True)
 
 class Payment(Base):
     __tablename__ = "payments"
     
-    customerNumber = Column(Integer, ForeignKey("customers.customerNumber"), primary_key=True)
+    customerNumber = Column(Integer, ForeignKey("customers.customerNumber", ondelete="CASCADE"), primary_key=True)
     checkNumber = Column(String(50), primary_key=True)
     paymentDate = Column(Date, nullable=False)
     amount = Column(Float, nullable=False)
