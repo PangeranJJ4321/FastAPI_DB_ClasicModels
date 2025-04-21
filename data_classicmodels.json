@@ -1,0 +1,155 @@
+{
+    "customer_tests": {
+      "create": {
+        "customerName": "Acme Corp",
+        "contactLastName": "Smith",
+        "contactFirstName": "John",
+        "phone": "555-123-4567",
+        "addressLine1": "123 Main St",
+        "addressLine2": "Suite 200",
+        "city": "Boston",
+        "state": "MA",
+        "postalCode": "02115",
+        "country": "USA",
+        "salesRepEmployeeNumber": 1056,
+        "creditLimit": 50000.00
+      },
+      "update": {
+        "customerName": "Acme Corporation",
+        "phone": "555-765-4321",
+        "creditLimit": 75000.00
+      },
+      "get": {
+        "customerNumber": 1
+      }
+    },
+    "employee_tests": {
+      "create": {
+        "lastName": "Johnson",
+        "firstName": "Sarah",
+        "extension": "x102",
+        "email": "sjohnson@example.com",
+        "officeCode": "1",
+        "reportsTo": 1002,
+        "jobTitle": "Sales Rep"
+      },
+      "update": {
+        "extension": "x103",
+        "email": "sarah.johnson@example.com",
+        "jobTitle": "Senior Sales Rep"
+      },
+      "get": {
+        "employeeNumber": 1
+      }
+    },
+    "office_tests": {
+      "create": {
+        "officeCode": "8",
+        "city": "Singapore",
+        "phone": "+65 6123 4567",
+        "addressLine1": "50 Raffles Place",
+        "addressLine2": "#20-00 Singapore Land Tower",
+        "state": null,
+        "country": "Singapore",
+        "postalCode": "048623",
+        "territory": "APAC"
+      },
+      "update": {
+        "phone": "+65 6765 4321",
+        "addressLine1": "100 Orchard Road"
+      },
+      "get": {
+        "officeCode": "1"
+      }
+    },
+    "order_tests": {
+      "create": {
+        "orderDate": "2025-04-15",
+        "requiredDate": "2025-04-30",
+        "shippedDate": null,
+        "status": "In Process",
+        "comments": "Customer requested expedited shipping",
+        "customerNumber": 103
+      },
+      "update": {
+        "status": "Shipped",
+        "shippedDate": "2025-04-18"
+      },
+      "get": {
+        "orderNumber": 10100
+      }
+    },
+    "orderdetail_tests": {
+      "create": {
+        "orderNumber": 10100,
+        "productCode": "S10_1678",
+        "quantityOrdered": 10,
+        "priceEach": 100.00,
+        "orderLineNumber": 1
+      },
+      "update": {
+        "quantityOrdered": 15,
+        "priceEach": 95.00
+      },
+      "get": {
+        "orderNumber": 10100,
+        "productCode": "S10_1678"
+      }
+    },
+    "product_tests": {
+      "create": {
+        "productCode": "S10_9999",
+        "productName": "1969 Ford Mustang",
+        "productLine": "Classic Cars",
+        "productScale": "1:18",
+        "productVendor": "Classic Metal Creations",
+        "productDescription": "This replica features working steering, suspension, wheel, and front doors.",
+        "quantityInStock": 100,
+        "buyPrice": 45.50,
+        "MSRP": 89.99
+      },
+      "update": {
+        "quantityInStock": 75,
+        "buyPrice": 49.99,
+        "MSRP": 94.99
+      },
+      "get": {
+        "productCode": "S10_1678"
+      }
+    },
+    "productline_tests": {
+      "create": {
+        "productLine": "Vintage Vehicles",
+        "textDescription": "A collection of vintage vehicles from the early 20th century",
+        "htmlDescription": "<p>A collection of <strong>vintage vehicles</strong> from the early 20th century</p>",
+        "image": "vintage_vehicles.jpg"
+      },
+      "update": {
+        "textDescription": "Updated collection of vintage vehicles from 1900-1950",
+        "image": "vintage_collection.jpg"
+      },
+      "get": {
+        "productLine": "Classic Cars"
+      }
+    },
+    "payment_tests": {
+      "create": {
+        "customerNumber": 103,
+        "checkNumber": "HQ336541",
+        "paymentDate": "2025-04-15",
+        "amount": 5000.00
+      },
+      "update": {
+        "paymentDate": "2025-04-16",
+        "amount": 5500.00
+      },
+      "get": {
+        "customerNumber": 103,
+        "checkNumber": "HQ336541"
+      }
+    },
+    "pagination_test": {
+      "page": 1,
+      "size": 10
+    }
+  }
